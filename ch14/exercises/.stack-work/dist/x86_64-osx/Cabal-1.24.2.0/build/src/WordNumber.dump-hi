@@ -1,0 +1,170 @@
+
+==================== FINAL INTERFACE ====================
+2017-02-25 00:33:40.33433 UTC
+
+interface exercises-0.1.0.0-81O6UheJEAbAffvJG5kGs0:WordNumber 8002
+  interface hash: 632b6d6435f3094ff9c26320edf0ed83
+  ABI hash: 6701fcf855aaff2f49a4054cb40f6c42
+  export-list hash: 92c3724353eed678ccb0199fb2536f57
+  orphan hash: 693e9af84d3dfcc71e640e005bdc5e2e
+  flag hash: f6624f22fcdd76ed0ac6625466e2d712
+  sig of: Nothing
+  used TH splices: False
+  where
+exports:
+  WordNumber.digitToWord
+  WordNumber.digits
+  WordNumber.wordNumber
+module dependencies:
+package dependencies: base-4.9.1.0* ghc-prim-0.5.0.0
+                      integer-gmp-1.0.0.1
+orphans: base-4.9.1.0:GHC.Base base-4.9.1.0:GHC.Float
+family instance modules: base-4.9.1.0:Control.Applicative
+                         base-4.9.1.0:Data.Either base-4.9.1.0:Data.Functor.Const
+                         base-4.9.1.0:Data.Monoid base-4.9.1.0:Data.Type.Equality
+                         base-4.9.1.0:GHC.Generics base-4.9.1.0:GHC.IO.Exception
+                         base-4.9.1.0:GHC.TypeLits
+import  -/  base-4.9.1.0:Data.Foldable 3e0b6967a1da89945d0e2d47266337a2
+import  -/  base-4.9.1.0:Data.List 07ae2acca6538aa0800bd0a993ac6ac1
+import  -/  base-4.9.1.0:Data.OldList 27987919d8da2f92e3f472ca81f730f8
+import  -/  base-4.9.1.0:GHC.Base c4231c43c07e46080a26bf94094c7aa1
+import  -/  base-4.9.1.0:GHC.List ab8c4e523e6c479c549d3bcd5fc4a439
+import  -/  base-4.9.1.0:GHC.Real 82e4e59051a13dba1da63e1e970a69e6
+import  -/  base-4.9.1.0:Prelude 22dd289b8469a8fa8dc81cab7b237771
+import  -/  ghc-prim-0.5.0.0:GHC.Classes 0bdf3d057a415ec1b84a7b1994efbe47
+e6bcc4866dec97a1442bda8469d0acc6
+  $trModule :: GHC.Types.Module
+  {- HasNoCafRefs, Strictness: m,
+     Unfolding: (GHC.Types.Module
+                   WordNumber.$trModule2
+                   WordNumber.$trModule1) -}
+d28343a7063c3c3c20c8adb4d6183258
+  $trModule1 :: GHC.Types.TrName
+  {- HasNoCafRefs, Strictness: m1,
+     Unfolding: (GHC.Types.TrNameS "WordNumber"#) -}
+5b9df7c238241d46b636758c59c20117
+  $trModule2 :: GHC.Types.TrName
+  {- HasNoCafRefs, Strictness: m1,
+     Unfolding: (GHC.Types.TrNameS
+                   "exercises-0.1.0.0-81O6UheJEAbAffvJG5kGs0"#) -}
+68490a100cfa4233e40ef52578a41343
+  $wdigitToWord :: GHC.Prim.Int# -> GHC.Base.String
+  {- Arity: 1, Strictness: <S,1*U>, Inline: [0],
+     Unfolding: (\ (ww :: GHC.Prim.Int#) ->
+                 case ww of ds {
+                   DEFAULT -> WordNumber.digitToWord11
+                   0# -> WordNumber.digitToWord10
+                   1# -> WordNumber.digitToWord9
+                   2# -> WordNumber.digitToWord8
+                   3# -> WordNumber.digitToWord7
+                   4# -> WordNumber.digitToWord6
+                   5# -> WordNumber.digitToWord5
+                   6# -> WordNumber.digitToWord4
+                   7# -> WordNumber.digitToWord3
+                   8# -> WordNumber.digitToWord2
+                   9# -> WordNumber.digitToWord1 }) -}
+30457bf3de9032b8887fa63e0bb79b49
+  $wgo :: GHC.Prim.Int# -> (# GHC.Types.Int, [GHC.Types.Int] #)
+  {- Arity: 1, HasNoCafRefs, Strictness: <S,U>, Inline: [0] -}
+c51e1be04a29c29c8a4d1b790a7164ee
+  $wwordNumber :: GHC.Prim.Int# -> [GHC.Types.Char]
+  {- Arity: 1, Strictness: <S,U>, Inline: [0],
+     Unfolding: (\ (ww :: GHC.Prim.Int#) ->
+                 case WordNumber.$wgo ww of ww1 { (#,#) ww2 ww3 ->
+                 case GHC.Base.map
+                        @ GHC.Types.Int
+                        @ [GHC.Types.Char]
+                        WordNumber.digitToWord
+                        (GHC.List.reverse1
+                           @ GHC.Types.Int
+                           (GHC.Types.: @ GHC.Types.Int ww2 ww3)
+                           (GHC.Types.[] @ GHC.Types.Int)) of wild {
+                   [] -> GHC.Types.[] @ GHC.Types.Char
+                   : x xs
+                   -> WordNumber.wordNumber_go
+                        (GHC.Types.:
+                           @ [GHC.Types.Char]
+                           x
+                           (Data.OldList.prependToAll
+                              @ [GHC.Types.Char]
+                              WordNumber.wordNumber1
+                              xs)) } }) -}
+7463ccdf37e3d1afdaf924082824a068
+  digitToWord :: GHC.Types.Int -> GHC.Base.String
+  {- Arity: 1, Strictness: <S(S),1*U(1*U)>, Inline: INLINE[0],
+     Unfolding: InlineRule (1, True, False)
+                (\ (w :: GHC.Types.Int) ->
+                 case w of ww { GHC.Types.I# ww1 ->
+                 WordNumber.$wdigitToWord ww1 }) -}
+43957cb693327bbf4366d5f7a0a8bb7b
+  digitToWord1 :: [GHC.Types.Char]
+  {- Unfolding: (GHC.CString.unpackCString# "nine"#) -}
+7c23fb537c77eb355125e8d026bb80e6
+  digitToWord10 :: [GHC.Types.Char]
+  {- Unfolding: (GHC.CString.unpackCString# "zero"#) -}
+c41b134836557a40aba7219e3d93f14a
+  digitToWord11 :: GHC.Base.String
+  {- Strictness: x -}
+8f1361b54df369f00a047277e014aa67
+  digitToWord2 :: [GHC.Types.Char]
+  {- Unfolding: (GHC.CString.unpackCString# "eight"#) -}
+d852b95d67cc4442959ac3dea47a5ff5
+  digitToWord3 :: [GHC.Types.Char]
+  {- Unfolding: (GHC.CString.unpackCString# "seven"#) -}
+5968bccf0acf5e74c235f964bf3bedb1
+  digitToWord4 :: [GHC.Types.Char]
+  {- Unfolding: (GHC.CString.unpackCString# "six"#) -}
+94c9e291172cd2d33b1d79f5be3eff35
+  digitToWord5 :: [GHC.Types.Char]
+  {- Unfolding: (GHC.CString.unpackCString# "five"#) -}
+7fc93ac39b5981da4ebfb595c8f693b6
+  digitToWord6 :: [GHC.Types.Char]
+  {- Unfolding: (GHC.CString.unpackCString# "four"#) -}
+280147b6f766e1813b9d7a4903b89acf
+  digitToWord7 :: [GHC.Types.Char]
+  {- Unfolding: (GHC.CString.unpackCString# "three"#) -}
+ddb1da5234ba3455b3750ac1646c4fb9
+  digitToWord8 :: [GHC.Types.Char]
+  {- Unfolding: (GHC.CString.unpackCString# "two"#) -}
+4c68ef4a6a0443f423b37eaf1896d64b
+  digitToWord9 :: [GHC.Types.Char]
+  {- Unfolding: (GHC.CString.unpackCString# "one"#) -}
+648c673a1d99ad1a599837f999d71396
+  digits :: GHC.Types.Int -> [GHC.Types.Int]
+  {- Arity: 1, HasNoCafRefs, Strictness: <S(S),1*U(U)>,
+     Unfolding: InlineRule (1, True, False)
+                (\ (x :: GHC.Types.Int) ->
+                 GHC.List.reverse1
+                   @ GHC.Types.Int
+                   (WordNumber.digits_go x)
+                   (GHC.Types.[] @ GHC.Types.Int)) -}
+a77dc258b0be908aa190ec541141d5d8
+  digits_go :: GHC.Types.Int -> [GHC.Types.Int]
+  {- Arity: 1, HasNoCafRefs, Strictness: <S(S),1*U(U)>m2,
+     Inline: INLINE[0],
+     Unfolding: InlineRule (1, True, False)
+                (\ (w :: GHC.Types.Int) ->
+                 case w of ww { GHC.Types.I# ww1 ->
+                 case WordNumber.$wgo ww1 of ww2 { (#,#) ww3 ww4 ->
+                 GHC.Types.: @ GHC.Types.Int ww3 ww4 } }) -}
+f70bb4607865793bdf1617e38cf04baf
+  wordNumber :: GHC.Types.Int -> GHC.Base.String
+  {- Arity: 1, Strictness: <S(S),1*U(U)>, Inline: INLINE[0],
+     Unfolding: InlineRule (1, True, False)
+                (\ (w :: GHC.Types.Int) ->
+                 case w of ww { GHC.Types.I# ww1 ->
+                 WordNumber.$wwordNumber ww1 }) -}
+0a946b0bbe7e757d2ece409b9aca9015
+  wordNumber1 :: [GHC.Types.Char]
+  {- Unfolding: (GHC.CString.unpackCString# "-"#) -}
+a6b52b9692ad4df3a963f24cc900c81e
+  wordNumber_go :: [[GHC.Types.Char]] -> [GHC.Types.Char]
+  {- Arity: 1, HasNoCafRefs, Strictness: <S,1*U> -}
+vectorised variables:
+vectorised tycons:
+vectorised reused tycons:
+parallel variables:
+parallel tycons:
+trusted: safe
+require own pkg trusted: False
+
