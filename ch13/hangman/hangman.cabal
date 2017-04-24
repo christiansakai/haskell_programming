@@ -1,13 +1,11 @@
 name:                hangman
 version:             0.1.0.0
 synopsis:            Playing Hangman
-description:         Tutorial from Haskell Programming from First Principles Chapter 13
 homepage:            https://github.com/githubuser/hangman#readme
 license:             BSD3
 license-file:        LICENSE
 author:              Christian Sakai
-maintainer:          christianmsakai@gmail
-copyright:           2017 Christian Sakai
+maintainer:          christianmsakai@egmail.com
 category:            Game
 build-type:          Simple
 cabal-version:       >=1.10
