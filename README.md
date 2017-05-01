@@ -2,5 +2,18 @@
 
 Code and answers for the book [Haskell Programming from First Principles](http://haskellbook.com/)
 
-__TODO__:
-* Redo Hangman Logic chapter 13
+Todo:
+* Ch 14
+  * word-number exercise
+  * Using QuickCheck exercise
+  * Failure exercise
+  * Idempotence
+  * Gen random generator
+  * Hangman testing
+  * Validating ciphers
+
+* Ch 15
+  * Semigroup exercise
+    * No. 8 - 13
+  * Monoid exercise
+
