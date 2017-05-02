@@ -17,3 +17,9 @@ Todo:
     * No. 8 - 13
   * Monoid exercise
 
+* Ch 15
+  * heavyLifting no. 5
+
+* Ch 16
+  * instancesOfFunc
+  * All exercises
