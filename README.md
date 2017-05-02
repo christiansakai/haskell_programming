@@ -13,8 +13,10 @@ Todo:
   * Validating ciphers
 
 * Ch 15
+  * maybeAnotherMonoid
+    * fail quickCheck
   * Semigroup exercise
-    * No. 8 - 13
+    * No. 9
   * Monoid exercise
 
 * Ch 15
