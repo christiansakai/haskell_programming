@@ -19,9 +19,17 @@ Todo:
     * No. 9
   * Monoid exercise
 
-* Ch 15
-  * heavyLifting no. 5
-
 * Ch 16
+  * heavyLifting no. 5
   * instancesOfFunc
-  * All exercises
+    * No. 7
+  * Chapter exercises
+    * Decide the kind
+      * No. 4
+    * Write functor instances
+      * No. 3
+      * No. 5
+      * No. 6
+      * No. 7
+      * No. 8
+      * No. 11

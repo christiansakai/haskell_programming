@@ -6,4 +6,3 @@ data Sum a b =
 instance Functor (Sum a) where
   fmap f (First a) = First a
   fmap f (Second b) = Second (f b)
-

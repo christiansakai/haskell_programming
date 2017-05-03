@@ -1,5 +1,6 @@
 import Test.QuickCheck
-import Data.Semigroup
+import Data.Semigroup 
+import Data.Monoid hiding ((<>))
 
 semigroupAssoc :: ( Eq m
                   , Semigroup m ) => m
@@ -9,6 +10,28 @@ semigroupAssoc :: ( Eq m
 semigroupAssoc a b c =
   (a <> (b <> c)) == ((a <> b) <> c)
 
+monoidAssoc :: ( Eq m
+               , Semigroup m
+               , Monoid m ) => m 
+                            -> m 
+                            -> m 
+                            -> Bool
+monoidAssoc a b c =
+  (a <> (b <> c)) == ((a <> b) <> c)
+
+monoidLeftIdentity :: ( Eq m
+                      , Semigroup m
+                      , Monoid m ) => m 
+                                   -> Bool
+monoidLeftIdentity a = 
+  (mempty <> a) == a
+
+monoidRightIdentity :: ( Eq m
+                       , Semigroup m
+                       , Monoid m ) => m 
+                                    -> Bool
+monoidRightIdentity a =
+  (a <> mempty) == a
 
 
 -- 1
@@ -16,6 +39,10 @@ data Trivial = Trivial deriving (Eq, Show)
 
 instance Semigroup Trivial where
   Trivial <> Trivial = Trivial
+
+instance Monoid Trivial where 
+  mempty = Trivial
+  mappend = (<>) 
 
 instance Arbitrary Trivial where
   arbitrary = return Trivial
@@ -25,6 +52,12 @@ type TrivialAssoc = Trivial
                  -> Trivial
                  -> Bool
 
+checkTrivial :: IO ()
+checkTrivial = do
+  quickCheck (semigroupAssoc :: TrivialAssoc)
+  quickCheck (monoidLeftIdentity :: Trivial -> Bool) 
+  quickCheck (monoidRightIdentity :: Trivial -> Bool)
+
 
 
 -- 2
@@ -33,6 +66,7 @@ newtype Identity a = Identity a deriving (Eq, Show)
 instance Semigroup a => 
          Semigroup (Identity a) where
   (Identity a) <> (Identity b) = Identity (a <> b)
+
 
 instance Arbitrary a => 
          Arbitrary (Identity a) where
@@ -44,6 +78,12 @@ type IdentityAssoc = Identity String
                   -> Identity String
                   -> Identity String
                   -> Bool
+
+checkIdentity :: IO ()
+checkIdentity = do
+  quickCheck (semigroupAssoc :: IdentityAssoc)
+  quickCheck (monoidLeftIdentity :: Identity String -> Bool) 
+  quickCheck (monoidRightIdentity :: Identity String -> Bool)
 
 
 
@@ -298,8 +338,8 @@ type AccumulateBothAssoc = AccumulateBoth String String
 
 main :: IO ()
 main = do
-  quickCheck (semigroupAssoc :: TrivialAssoc)
-  quickCheck (semigroupAssoc :: IdentityAssoc)
+  checkTrivial
+  checkIdentity
   quickCheck (semigroupAssoc :: TwoAssoc)
   quickCheck (semigroupAssoc :: ThreeAssoc)
   quickCheck (semigroupAssoc :: FourAssoc)

@@ -19,3 +19,16 @@
    `c a b -> c b a`
 
    `* -> * -> *`
+
+# Chapter Exercise
+## Decide the kind
+
+1. Can't
+
+2. Can
+
+3. Can
+
+4. ?
+
+5. Can
