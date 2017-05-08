@@ -13,11 +13,10 @@ Todo:
   * Validating ciphers
 
 * Ch 15
-  * maybeAnotherMonoid
-    * fail quickCheck
   * Semigroup exercise
-    * No. 9
+    * No. 9, 10
   * Monoid exercise
+    * No. 8, 11, 12
 
 * Ch 16
   * heavyLifting no. 5
@@ -33,3 +32,11 @@ Todo:
       * No. 7
       * No. 8
       * No. 11
+
+* Ch 17
+  * Lookup
+    * No. 4
+  * Constant
+  * Start from List applicative exercise to the end of teh chapter
+
+

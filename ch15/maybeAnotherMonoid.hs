@@ -2,7 +2,6 @@ import Test.QuickCheck
 import Data.Monoid
 
 
-
 monoidAssoc :: (Eq m, Monoid m) => m -> m -> m -> Bool
 monoidAssoc a b c =
   (a <> (b <> c)) == ((a <> b) <> c)
@@ -16,39 +15,54 @@ monoidRightIdentity a =
   (a <> mempty) == a
 
 
-
 data Optional a =
     Nada
   | Only a
   deriving (Eq, Show)
 
+
 instance Monoid a => Monoid (Optional a) where
-  -- mempty :: a
+  -- mempty :: Optional a
   mempty = Nada
 
-  -- mappend :: a -> a -> a
+  -- mappend :: Optional a -> Optional a -> Optional a
   mappend x Nada            = x
   mappend Nada x            = x
   mappend (Only a) (Only b) = Only (mappend a b)
 
+
 instance Arbitrary a => Arbitrary (Optional a) where
+  -- arbitrary :: Gen (Optional a)
   arbitrary = do
     a <- arbitrary
     frequency [ (1, return Nada)
-              , (3, return (Only a))]
-
+              , (3, return (Only a)) 
+              ]
 
 
 newtype First' a =
   First' { getFirst' :: Optional a }
   deriving (Eq, Show)
 
+
+-- | This monoid instance does not
+-- require for the contents to be 
+-- a monoid
 instance Monoid (First' a) where
-  -- mempty :: a
+  -- mempty :: First' a
   mempty = First' Nada
 
-  -- mappend :: a -> a -> a
-  mappend (First' x) (First' y) = First' x
+  -- mappend :: First' a -> First' a -> First' a
+  mappend x@(First' (Only _)) _   = x
+  mappend (First' Nada) x         = x
+
+
+instance Arbitrary a => Arbitrary (First' a) where
+  -- arbitrary :: Gen (First' a)
+  arbitrary = do
+    a <- arbitrary
+    return (First' a)
+
 
 firstMappend :: First' a
              -> First' a
@@ -61,10 +75,6 @@ type FirstMappend =
  -> First' String
  -> Bool
 
-instance Arbitrary a => Arbitrary (First' a) where
-  arbitrary = do
-    a <- arbitrary
-    return (First' a)
 
 type FstId = First' String -> Bool
 
