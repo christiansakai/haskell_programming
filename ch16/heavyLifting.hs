@@ -17,10 +17,10 @@ e :: IO Integer
 e =
   let
     ioi = readIO "1" :: IO Integer
-    changed = read ("123" ++) show ioi
+    changed = fmap (read . ("123" ++)) $ fmap show ioi
 
   in 
-    (*3) changed
+    fmap (*3) changed
 
 
 

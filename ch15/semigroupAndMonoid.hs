@@ -291,14 +291,17 @@ checkBoolDisj = do
 
 
 -- 8
-data Or a b = Fst a
-            | Snd b
-            deriving (Eq, Show)
+data Or a b =
+    Fst a
+  | Snd b
+  deriving (Eq, Show)
 
 instance Semigroup (Or a b) where
+  -- (<>) :: (Or a b) -> (Or a b) -> (Or a b)
+  (Fst a) <> (Snd b) = Snd b
   (Fst a) <> (Fst b) = Fst b
-  _ <> (Snd b)       = Snd b
-  (Snd a) <> _       = Snd a
+  (Snd a) <> (Fst b) = Snd a
+  (Snd a) <> (Snd b) = Snd a
 
 instance Monoid a => Monoid (Or a b) where
   -- mempty :: Or a b
@@ -315,7 +318,8 @@ instance
       a <- arbitrary
       b <- arbitrary
       frequency [ (1, return (Fst a))
-                , (1, return (Snd b)) ]
+                , (1, return (Snd b)) 
+                ]
 
 type OrAssoc = Or Int Int
             -> Or Int Int
@@ -325,9 +329,9 @@ type OrAssoc = Or Int Int
 checkOr :: IO ()
 checkOr = do
   quickCheck (semigroupAssoc :: OrAssoc)
-  quickCheck (monoidLeftIdentity :: Or String String -> Bool) 
+  quickCheck (monoidLeftIdentity :: Or String String -> Bool)
   -- NOT DONE YET
-  -- verboseCheck (monoidRightIdentity :: Or String String -> Bool)
+  -- quickCheck (monoidRightIdentity :: Or String String -> Bool)
 
 -- 9
 -- 10

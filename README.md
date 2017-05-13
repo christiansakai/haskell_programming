@@ -18,25 +18,22 @@ Todo:
   * Monoid exercise
     * No. 8, 11, 12
 
-* Ch 16
-  * heavyLifting no. 5
-  * instancesOfFunc
-    * No. 7
-  * Chapter exercises
-    * Decide the kind
-      * No. 4
-    * Write functor instances
-      * No. 3
-      * No. 5
-      * No. 6
-      * No. 7
-      * No. 8
-      * No. 11
-
 * Ch 17
-  * Lookup
-    * No. 4
   * Constant
-  * Start from List applicative exercise to the end of teh chapter
+  * Ziplist applicative
 
+* Ch 18
+  * writeUsingFunctorMonad
+    * No. 5, 6
 
+* Ch 19
+  * Connect to Redis
+  * Exercise
+
+* Ch 20
+  * libraryFunction
+    * No. 9, No. 10
+  * Chapter exercise
+    * No. 1, 4, 5, filterF
+
+* Ch21

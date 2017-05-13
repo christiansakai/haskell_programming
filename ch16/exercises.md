@@ -23,12 +23,12 @@
 # Chapter Exercise
 ## Decide the kind
 
-1. Can't
+1. Can't, because kind *
 
-2. Can
+2. Can, because kind is * -> *
 
-3. Can
+3. Can, because kind is * -> *
 
-4. ?
+4. Can, because kind is * -> *
 
-5. Can
+5. Can't, because kind is *

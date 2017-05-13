@@ -1,0 +1,29 @@
+name:                shawty
+version:             0.1.0.0
+synopsis:            Initial project template from stack
+description:         Please see README.md
+homepage:            https://github.com/githubuser/shawty#readme
+license:             BSD3
+license-file:        LICENSE
+author:              Christian Sakai
+maintainer:          christianmsakai@gmail
+copyright:           2017 Christian Sakai
+category:            Web
+build-type:          Simple
+cabal-version:       >=1.10
+
+executable shawty-exe
+  hs-source-dirs:      app
+  main-is:             Main.hs
+  ghc-options:         -threaded -rtsopts -with-rtsopts=-N
+  build-depends:       base
+                     , bytestring
+                     , hedis
+                     , mtl
+                     , network-uri
+                     , random
+                     , scotty
+                     , semigroups
+                     , text
+                     , transformers
+  default-language:    Haskell2010

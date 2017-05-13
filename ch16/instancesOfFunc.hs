@@ -175,6 +175,37 @@ checkFour = do
   quickCheck (functorIdentity :: FourId)
   quickCheck (functorCompose' :: FourCompose)
 
+-- 7
+data Four' a b = Four' a a a b
+  deriving (Eq, Show)
+
+instance Functor (Four' a) where
+  -- fmap :: (a -> b) -> Four' a b -> Four' a b
+  fmap f (Four' a a' a'' b) = Four' a a' a'' (f b)
+
+instance 
+  ( Arbitrary a
+  , Arbitrary b
+  ) => Arbitrary (Four' a b) where
+    arbitrary = do
+      a <- arbitrary
+      a' <- arbitrary
+      a'' <- arbitrary
+      b <- arbitrary
+      return (Four' a a' a'' b)
+
+type FourId' = Four' Bool Int
+            -> Bool
+
+type FourCompose' = Four' Int Char
+                 -> Fun Char String
+                 -> Fun String Int
+                 -> Bool
+
+checkFour' :: IO ()
+checkFour' = do
+  quickCheck (functorIdentity :: FourId')
+  quickCheck (functorCompose' :: FourCompose')
 
 
 main :: IO ()
@@ -184,3 +215,4 @@ main = do
   checkTwo
   checkThree
   checkFour
+  checkFour'
