@@ -6,10 +6,10 @@ data Optional a =
   deriving (Eq, Show)
 
 instance Monoid a => Monoid (Optional a) where
-  -- mempty :: a
+  -- mempty :: Optional a
   mempty = Nada
 
-  -- mappend :: a -> a -> a
-  mappend x Nada            = x
-  mappend Nada x            = x
-  mappend (Only a) (Only b) = Only (mappend a b)
+  -- mappend :: Optional a -> Optional a -> Optional a
+  mappend Nada _  = Nada
+  mappend _ Nada  = Nada
+  mappend (Only a) (Only b) = Only (a `mappend` b)

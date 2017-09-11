@@ -99,10 +99,10 @@ sumFirstPlay = do
   sample sumGenCharIntFirst
 
 
-data Bool'
-  = True'
+data Bool' =
+    True'
   | False'
-  deriving ( Generic )
+  deriving (Generic)
 
 instance CoArbitrary Bool'
 

@@ -1,13 +1,12 @@
 module Addition where
-
+  
 import Test.Hspec
 import Test.QuickCheck
 
 main :: IO ()
 main = hspec $ 
   describe "Addition" $ do
-
-    it "1 + 1 is greater than 1" $ 
+    it "1 + 1 is greater than 1" $
       (1 + 1) > 1 `shouldBe` True
 
     it "2 + 2 is equal to 4" $
@@ -16,14 +15,17 @@ main = hspec $
     it "15 divided by 3 is 5" $
       dividedBy 15 3 `shouldBe` (5, 0)
 
-    it "22 divided by 5 is 4 remainder 2" $
+    it "22 divided by 5 is\
+       \ 4 remainder 2" $
       dividedBy 22 5 `shouldBe` (4, 2)
 
     it "3 multiplyRecursive 4 is 12" $
       multiplyRecursive 3 4 `shouldBe` 12
 
-    it "x + 1 is always greater than x" $
+    it "x + 1 is always\
+       \ greater than x" $
       property $ \x -> x + 1 > (x :: Int)
+
 
 
 dividedBy :: Integral a => a -> a -> (a, a)
@@ -87,9 +89,6 @@ genMaybe' = do
   a <- arbitrary
   frequency [ (1, return Nothing)
             , (3, return (Just a))]
-
-sayHello :: IO ()
-sayHello = putStrLn "hello!"
 
 -- Run QuickCheck without Hspec
 prop_additionGreater :: Int -> Bool

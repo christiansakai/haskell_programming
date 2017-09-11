@@ -8,6 +8,6 @@ instance Functor Identity where
 instance Applicative Identity where
   -- pure :: a -> Identity a
   pure = Identity
-
+  
   -- (<*>) :: Identity (a -> b) -> Identity a -> Identity b
-  (<*>) (Identity f) (Identity a) = Identity (f a)
+  (Identity f) <*> (Identity a) = Identity (f a)

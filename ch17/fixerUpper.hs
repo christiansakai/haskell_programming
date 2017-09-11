@@ -1,6 +1,5 @@
 -- 1
-one = const <$> Just "Hello" <*> Just "World"
+one = const <$> Just "Hello" <*> (pure "World")
 
 -- 2
-two = 
-  (,,,) <$> Just 90 <*> Just 10 <*> Just "Tierness" <*> Just [1, 2, 3]
+two = (,,,) <$> Just 90 <*> Just 10 <*> Just "Tierness" <*> (pure [1, 2, 3])
