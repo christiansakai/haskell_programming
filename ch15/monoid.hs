@@ -169,14 +169,49 @@ checkBoolDisj = do
 -- 6
 newtype Combine a b = Combine { unCombine :: (a -> b) }
 
+instance Semigroup b => Semigroup (Combine a b) where
+  -- (<>) :: Combine a b -> Combine a b -> Combine a b
+  (Combine f) <> (Combine g) =
+    Combine (\x -> f x <> g x)
+    
+instance (Semigroup b, Monoid b) => Monoid (Combine a b) where
+  -- mempty :: Combine a b
+  mempty = Combine $ \n -> mempty
+
+  -- mappend :: Combine a b -> Combine a b -> Combine a b
+  mappend = (<>)
+
 -- 7
 newtype Comp a = Comp { unComp :: (a -> a) }
 
+instance Semigroup (Comp a) where
+  -- (<>) :: Comp a -> Comp a -> Comp a
+  Comp f <> Comp g = Comp $ f . g
+
+instance Semigroup a => Monoid (Comp a) where
+  -- mempty :: Comp a
+  mempty = Comp id
+
+  -- mappend :: Comp a -> Comp a -> Comp a
+  mappend = (<>)
+
 -- 8
 newtype Mem s a =
-  Mem {
-    runMem :: s -> (a,s)
-  }
+  Mem { runMem :: s -> (a, s) }
+
+instance Semigroup (Mem s a) where
+  -- (<>) :: Mem s a -> Mem s a -> Mem s a
+  Mem sas <> Mem sas' = Mem $ \s ->
+    let (a, s') = sas s 
+        (a', s'') = sas' s'
+     in (a', s'')
+
+instance Monoid a => Monoid (Mem s a) where
+  -- mempty :: Mem s a
+  mempty = Mem $ \s -> (mempty, s)
+
+  -- mappend :: Mem s a ->  Mem s a -> Mem s a
+  mappend = (<>)
 
 main :: IO ()
 main = do

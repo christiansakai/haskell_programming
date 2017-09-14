@@ -1,3 +1,11 @@
+#!/usr/local/bin/stack
+{- stack 
+   exec ghci
+   --resolver lts-9.3 
+   --install-ghc 
+   --package QuickCheck
+-}
+
 import Test.QuickCheck
 import Data.Semigroup 
 import Data.Monoid hiding ((<>))
@@ -211,7 +219,12 @@ instance Semigroup b => Semigroup (Combine a b) where
     Combine (\x -> f x <> g x)
     
 -- 10
+newtype Comp a = 
+  Comp { unComp :: (a -> a) }
 
+instance Semigroup (Comp a) where
+  -- (<>) :: Comp a -> Comp a -> Comp a
+  Comp f <> Comp g = Comp $ f . g
 
 -- 11
 data Validation a b =

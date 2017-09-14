@@ -1,10 +1,5 @@
 import Data.List (elemIndex)
 
--- Use:
--- pure 
--- <$> or fmap
--- <*>
-
 -- 1
 added :: Maybe Integer
 added = pure (+3) <*> (lookup 3 $ zip [1, 2, 3] [4, 5, 6])
@@ -31,3 +26,19 @@ max' = max
 
 maxed :: Maybe Int
 maxed = pure max' <*> x' <*> y'
+
+-- 4
+xs :: [Integer]
+xs = [1, 2, 3]
+
+ys :: [Integer]
+ys = [4, 5, 6]
+
+x'' :: Maybe Integer
+x'' = lookup 3 $ zip xs ys
+
+y'' :: Maybe Integer
+y'' = lookup 2 $ zip xs ys
+
+summed :: Maybe Integer
+summed = fmap sum $ pure (,) <*> x''<*> y''
