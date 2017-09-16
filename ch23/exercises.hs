@@ -23,7 +23,7 @@ instance Monad (State s) where
 
   -- (>>=) :: State s a -> (a -> State s b) -> State s b
   State sa >>= f = let (a, s) = sa s
-                  in f a
+                    in f a
 
 -- 1
 
@@ -31,16 +31,19 @@ get :: State s s
 get = State $ \s -> (s, s)
 
 -- 2
+
 put :: s -> State s ()
 put s = State $ \s -> ((), s)
 
 -- 3
-exec :: State s a -> s -> s
-exec (State sa) s = let (a, s) = sa s
-                     in s
 
+exec :: State s a -> s -> s
+exec (State sa) = snd . sa
+  
 -- 4
 eval :: State s a -> s -> a
-eval (State sa) s = let (a, s) = sa s
-                     in a
+eval (State sa) = fst . sa
 
+-- 5
+modify :: (s -> s) -> State s ()
+modify f = State $ \s -> ((), f s)

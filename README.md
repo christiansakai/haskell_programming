@@ -15,6 +15,12 @@ Todo:
     * add 1 - 8 with QuickCheck
     * no. 9
 
+* Ch 22
+  * rewrite shawty
+
+* Ch 23
+  * fizzBuzz
+
 __Template for scripting with Stack__
 
 ```

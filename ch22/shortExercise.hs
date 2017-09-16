@@ -1,10 +1,10 @@
 import Data.Char
 
 cap :: [Char] -> [Char]
-cap = map toUpper
+cap xs = map toUpper xs
 
 rev :: [Char] -> [Char]
-rev = reverse
+rev xs = reverse xs
 
 composed :: [Char] -> [Char]
 composed = cap . rev
@@ -13,14 +13,13 @@ fmapped :: [Char] -> [Char]
 fmapped = fmap cap rev
 
 tupled :: [Char] -> ([Char], [Char])
-tupled x = (cap x, rev x)
+tupled str = (cap str, rev str)
 
 tupled' :: [Char] -> ([Char], [Char])
-tupled' = ((,) <$> cap <*> rev)
+tupled' = (,) <$> rev <*> cap
 
 tupled'' :: [Char] -> ([Char], [Char])
-tupled'' =
-  
-
-
-
+tupled'' = do
+  revved <- rev
+  capped <- cap
+  return (revved, capped)
