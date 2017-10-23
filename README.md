@@ -21,6 +21,16 @@ Todo:
 * Ch 23
   * fizzBuzz
 
+* Ch 24
+  * Exercise 4 onward
+
+* Ch 25
+  * Compose Instances - Traversable
+
+* Ch 26
+  * EitherT
+    * no. 4, 5
+  * OuterInner
 
 __Template for scripting with Stack__
 
