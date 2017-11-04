@@ -28,6 +28,8 @@ Todo:
   * Compose Instances - Traversable
 
 * Ch 26
+  * hitCounter
+  * Morra
 
 __Template for scripting with Stack__
 
