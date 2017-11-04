@@ -47,17 +47,26 @@ instance Monad m => Monad (EitherT e m) where
               runEitherT (f a)
 
 -- 4
-swapEitherT :: (Functor m)
+swapEither :: Either e a -> Either a e
+swapEither (Left e) = Right e
+swapEither (Right a) = Left a
+
+swapEitherT :: forall e a m
+            . (Functor m)
             => EitherT e m a
             -> EitherT a m e
-swapEitherT = undefined
-
--- Hint: write swapEither first
+swapEitherT (EitherT mea) = 
+  EitherT $ fmap swapEither mea
 
 -- 5
-eitherT :: Monad m =>
-           (a -> m c)
+eitherT :: forall a b c m
+         . Monad m 
+        => (a -> m c)
         -> (b -> m c)
         -> EitherT a m b
         -> m c
-eitherT = undefined
+eitherT aTomc bTomc (EitherT mab) = 
+  mab >>= \eitherAb ->
+    case eitherAb of
+      Left a -> aTomc a
+      Right b -> bTomc b
